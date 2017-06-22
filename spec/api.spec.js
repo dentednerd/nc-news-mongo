@@ -1,5 +1,5 @@
 process.env.NODE_ENV = 'test';
-const {expect} = require('chai');
+const { expect } = require('chai');
 const request = require('supertest');
 const server = require('../server');
 const saveTestData = require('../seed/test.seed');
@@ -33,4 +33,17 @@ describe('API', function () {
         });
     });
   });
+  // describe('GET /api/topics', function () {
+  //   it('returns a list of topics', function (done) {
+  //     request(server)
+  //       .get('/api/topics')
+  //       .end((err, res) => {
+  //         if (err) res.status(500);
+  //         else {
+  //           expect(res.status).to.equal(200);
+  //           done();
+  //         }
+  //       });
+  //   });
+  // });
 });
