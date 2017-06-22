@@ -1,6 +1,6 @@
 const express = require('express');
 
-const {getNewsTopics} = require('../controllers/user_controllers');
+const { getNewsTopics, getArticlesByTopic, getAllArticles } = require('../controllers/user_controllers');
 
 const router = express.Router();
 
@@ -12,10 +12,12 @@ const router = express.Router();
 
 // router.post('/users/remove', deleteUser);
 
-
 // router.get('/api/topics', getNewsTopics);
 
 router.get('/api/topics', getNewsTopics);
 
+router.get('/api/topics/:topic_id/articles', getArticlesByTopic);
+
+router.get('/api/articles', getAllArticles);
 
 module.exports = router;
