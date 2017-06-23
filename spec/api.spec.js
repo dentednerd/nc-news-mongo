@@ -7,7 +7,7 @@ const saveTestData = require('../seed/test.seed');
 // const db = config.DB[process.env.NODE_ENV] || process.env.DB;
 const mongoose = require('mongoose');
 
-describe('API', function () {
+describe('API', function() {
     this.timeout(10000)
     let usefulData;
     before((done) => {
@@ -24,8 +24,8 @@ describe('API', function () {
             });
     });
 
-    describe('GET /', function () {
-        it('responds with status code 200', function (done) {
+    describe('GET /', function() {
+        it('responds with status code 200', function(done) {
             request(server)
                 .get('/api')
                 .end((err, res) => {
@@ -37,8 +37,8 @@ describe('API', function () {
                 });
         });
     });
-    describe('GET /api/topics', function () {
-        it('returns a list of topics', function (done) {
+    describe('GET /api/topics', function() {
+        it('returns a list of topics', function(done) {
             request(server)
                 .get('/api/topics')
                 .end((err, res) => {
@@ -51,8 +51,8 @@ describe('API', function () {
                 });
         });
     });
-    describe('GET /api/topics/:topic_id/articles', function () {
-        it('returns a list of articles from a single topic', function (done) {
+    describe('GET /api/topics/:topic_id/articles', function() {
+        it('returns a list of articles from a single topic', function(done) {
             //get the topic with the title of football and find its id use that is to construct the string
             // use model from db then do request
 
@@ -69,8 +69,8 @@ describe('API', function () {
                 });
         });
     });
-    describe('GET /api/articles', function () {
-        it('returns a list of all articles', function (done) {
+    describe('GET /api/articles', function() {
+        it('returns a list of all articles', function(done) {
             request(server)
                 .get('/api/articles')
                 .end((err, res) => {
@@ -83,23 +83,22 @@ describe('API', function () {
                 });
         });
     });
-    xdescribe('GET /api/articles/:article_id/comments', function () {
-        it('returns a list of comments from a single article', function (done) {
-            //get the topic with the title of football and find its id use that is to construct the string
-            // use model from db then do request
-
-            // console.log(topics);
+    describe('GET /api/articles/:article_id/comments', function() {
+        it('returns a list of comments from a single article', function(done) {
+            // console.log(usefulData);
+            let articleId = usefulData.comments[0].belongs_to;
+            console.log('articleId: ' + articleId);
             request(server)
-                .get(`/api/articles//comments`)
+                .get(`/api/articles/${articleId}/comments`)
                 .end((err, res) => {
                     if (err) res.status(500);
                     else {
                         expect(res.status).to.equal(200);
-                        expect(res.body.length).to.equal(1);
+                        expect(res.body.comments.length).to.equal(2);
+                        expect(res.body.comments).to.be.an('array');
                         done();
                     }
                 });
         });
     });
-
 });
