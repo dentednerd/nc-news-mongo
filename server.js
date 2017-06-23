@@ -17,10 +17,11 @@ mongoose.connect(db, function(err) {
         console.log(`error connecting to the Database ${err}`);
     }
 });
-app.use(router);
-app.use(morgan('test'));
+
+app.use(morgan('dev'));
 app.use(bodyParser.json());
 
+app.use('/api', router);
 
 // error handling
 // app.use(function(err, req, res, next) {

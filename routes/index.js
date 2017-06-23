@@ -1,14 +1,18 @@
 const express = require('express');
 
-const { getNewsTopics, getArticlesByTopic, getAllArticles, getCommentsByArticle } = require('../controllers/user_controllers');
+const { getAllTopics } = require('../controllers/topics');
+const { getAllArticles, getArticlesByTopic } = require('../controllers/articles');
+const { getCommentsByArticle } = require('../controllers/comments');
 
 const router = express.Router();
 
-router.get('/api/topics', getNewsTopics);
-router.route('/api/topics/:topic_id/articles', getArticlesByTopic);
+router.get('/', (req, res) => res.send('Everything is fine!'));
 
-router.get('/api/articles', getAllArticles);
-router.get('/api/articles/:article_id/comments', getCommentsByArticle);
+router.get('/topics', getAllTopics);
+router.get('/topics/:topic_id/articles', getArticlesByTopic);
+
+router.get('/articles', getAllArticles);
+router.get('/articles/:article_id/comments', getCommentsByArticle);
 
 module.exports = router;
 
