@@ -21,19 +21,18 @@ app.use(router);
 app.use(morgan('test'));
 app.use(bodyParser.json());
 
+
 // error handling
-app.use(function(err, req, res, next) {
-    if (err.status) {
-        return res.status(err.status).json({ message: err.message });
-    }
-    next();
-});
+// app.use(function(err, req, res, next) {
+//     if (err.status) {
+//         return res.status(err.status).json({ message: err.message });
+//     }
+//     next();
+// });
 
-app.use(function(err, req, res) {
-    res.status(500).json({ message: 'Server error!' });
-});
-
-app.use('/api', function() {});
+// app.use(function(err, req, res) {
+//     res.status(500).json({ message: 'Server error!' });
+// });
 
 app.listen(PORT, function() {
     console.log(`listening on port ${PORT}`);
