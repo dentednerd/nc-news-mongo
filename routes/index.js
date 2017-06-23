@@ -2,7 +2,7 @@ const express = require('express');
 
 const { getAllTopics } = require('../controllers/topics');
 const { getAllArticles, getArticlesByTopic } = require('../controllers/articles');
-const { getCommentsByArticle } = require('../controllers/comments');
+const { getCommentsByArticle, postNewComment } = require('../controllers/comments');
 
 const router = express.Router();
 
@@ -14,5 +14,6 @@ router.get('/topics/:topic_id/articles', getArticlesByTopic);
 router.get('/articles', getAllArticles);
 router.get('/articles/:article_id/comments', getCommentsByArticle);
 
-module.exports = router;
+router.post('/articles/:article_id/comments', postNewComment);
 
+module.exports = router;

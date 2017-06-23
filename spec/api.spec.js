@@ -97,4 +97,22 @@ describe('API', function() {
                 });
         });
     });
+
+    describe('POST /api/articles/:article_id/comments', function() {
+        it('adds a new comment to an article', function(done) {
+            let articleId = usefulData.comments[0].belongs_to;
+            request(server)
+                .post(`/api/articles/${articleId}/comments`)
+                .send({ comment: "Hello Phil" })
+                .end((err, res) => {
+                    if (err) res.status(500);
+                    else {
+                        expect(res.status).to.equal(200);
+                        expect(res.body.comment.body).to.equal("Hello Phil");
+                    }
+                    done();
+                });
+
+        });
+    });
 });
