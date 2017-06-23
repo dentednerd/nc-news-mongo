@@ -7,14 +7,17 @@ const config = require('../config');
 const db = config.DB[process.env.NODE_ENV] || process.env.DB;
 const mongoose = require('mongoose');
 
-describe('API', function() {
-    // let usefulIds;
+describe('API', function () {
+    let usefulIds;
     before((done) => {
         mongoose.connection.dropDatabase()
-            .then(() => saveTestData(db, done));
+            .then(() => saveTestData(db, function (err, data) {
+                usefulIds = data;
+                done();
+            }));
     });
-    describe('GET /', function() {
-        it('responds with status code 200', function(done) {
+    describe('GET /', function () {
+        it('responds with status code 200', function (done) {
             request(server)
                 .get('/')
                 .end((err, res) => {
@@ -26,8 +29,8 @@ describe('API', function() {
                 });
         });
     });
-    describe('GET /api/topics', function() {
-        it('returns a list of topics', function(done) {
+    describe('GET /api/topics', function () {
+        it('returns a list of topics', function (done) {
             request(server)
                 .get('/api/topics')
                 .end((err, res) => {
@@ -40,8 +43,12 @@ describe('API', function() {
                 });
         });
     });
-    describe('GET /api/topics/:topic_id/articles', function() {
-        it('returns a list of articles from a single topic', function(done) {
+    describe('GET /api/topics/:topic_id/articles', function () {
+        it('returns a list of articles from a single topic', function (done) {
+            //get the topic with the title of football and find its id use that is to construct the string
+            // use model from db then do request
+
+            // console.log(topics);
             request(server)
                 .get(`/api/topics/football/articles`)
                 .end((err, res) => {
@@ -54,8 +61,8 @@ describe('API', function() {
                 });
         });
     });
-    describe('GET /api/articles', function() {
-        it('returns a list of all articles', function(done) {
+    describe('GET /api/articles', function () {
+        it('returns a list of all articles', function (done) {
             request(server)
                 .get('/api/articles')
                 .end((err, res) => {
@@ -68,4 +75,23 @@ describe('API', function() {
                 });
         });
     });
+    describe('GET /api/articles/:article_id/comments', function () {
+        it('returns a list of comments from a single article', function (done) {
+            //get the topic with the title of football and find its id use that is to construct the string
+            // use model from db then do request
+
+            // console.log(topics);
+            request(server)
+                .get(`/api/articles//comments`)
+                .end((err, res) => {
+                    if (err) res.status(500);
+                    else {
+                        expect(res.status).to.equal(200);
+                        expect(res.body.length).to.equal(1);
+                        done();
+                    }
+                });
+        });
+    });
+
 });
