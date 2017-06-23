@@ -20,8 +20,17 @@ mongoose.connect(db, function(err) {
 app.use(router);
 app.use(morgan('test'));
 app.use(bodyParser.json());
-app.get('/', function(req, res) {
-    res.status(200).send('All good!');
+
+// error handling
+app.use(function(err, req, res, next) {
+    if (err.status) {
+        return res.status(err.status).json({ message: err.message });
+    }
+    next();
+});
+
+app.use(function(err, req, res) {
+    res.status(500).json({ message: 'Server error!' });
 });
 
 app.use('/api', function() {});
