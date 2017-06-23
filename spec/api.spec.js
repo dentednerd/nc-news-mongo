@@ -8,7 +8,7 @@ const saveTestData = require('../seed/test.seed');
 const mongoose = require('mongoose');
 
 describe('API', function() {
-    this.timeout(10000)
+    this.timeout(10000);
     let usefulData;
     before((done) => {
         mongoose.connection.dropDatabase()
@@ -53,10 +53,6 @@ describe('API', function() {
     });
     describe('GET /api/topics/:topic_id/articles', function() {
         it('returns a list of articles from a single topic', function(done) {
-            //get the topic with the title of football and find its id use that is to construct the string
-            // use model from db then do request
-
-            // console.log(topics);
             request(server)
                 .get(`/api/topics/football/articles`)
                 .end((err, res) => {
