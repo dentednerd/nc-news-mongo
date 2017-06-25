@@ -100,6 +100,7 @@ describe('API', function() {
 
     describe('POST /api/articles/:article_id/comments', function() {
         it('adds a new comment to an article', function(done) {
+            console.log(usefulData);
             let articleId = usefulData.comments[0].belongs_to;
             request(server)
                 .post(`/api/articles/${articleId}/comments`)
@@ -107,7 +108,7 @@ describe('API', function() {
                 .end((err, res) => {
                     if (err) res.status(500);
                     else {
-                        expect(res.status).to.equal(200);
+                        expect(res.status).to.equal(201);
                         expect(res.body.comment.body).to.equal("Hello Phil");
                     }
                     done();
