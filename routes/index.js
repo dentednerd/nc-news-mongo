@@ -1,12 +1,12 @@
 const express = require('express');
 
 const { getAllTopics } = require('../controllers/topics');
-const { getAllArticles, getArticlesByTopic } = require('../controllers/articles');
+const { getAllArticles, getArticleById, getArticlesByTopic } = require('../controllers/articles');
 const { getCommentsByArticle, postNewComment, voteArticle, voteComment, deleteComment, getUser } = require('../controllers/comments');
 
 const router = express.Router();
 
-router.get('/', (req, res) => res.send('Everything is fine!'));
+router.get('/', (req, res) => res.send("Welcome to dentednerd's Northcoders News API!\nTry /topics, /users or /articles."));
 
 // get all the topics
 router.get('/topics', getAllTopics);
@@ -16,6 +16,9 @@ router.get('/topics/:topic_id/articles', getArticlesByTopic);
 
 // get all articles
 router.get('/articles', getAllArticles);
+
+// get article by id
+router.get('/articles/:article_id', getArticleById);
 
 // get all comments for an article
 router.get('/articles/:article_id/comments', getCommentsByArticle);

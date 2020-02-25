@@ -6,7 +6,7 @@ exports.getCommentsByArticle = (req, res) => {
     let slug = req.params.article_id;
     Comments.find({ belongs_to: slug })
         .then((comments) => {
-            res.json({ comments });
+            res.append('Access-Control-Allow-Origin', '*').json({ comments });
         })
         .catch((err) => {
             res.status(500).json(err);
@@ -22,7 +22,7 @@ exports.postNewComment = (req, res) => {
     comment
         .save()
         .then((comment) => {
-            res.status(201).send({ comment: comment });
+            res.append('Access-Control-Allow-Origin', '*').status(201).send({ comment: comment });
         })
         .catch((err) => {
             res.status(500).json(err);
@@ -45,7 +45,7 @@ exports.voteComment = (req, res) => {
     let commentId = req.params.comment_id;
     Comments.findByIdAndUpdate({ _id: commentId }, { $inc: { votes: 1 } }, { new: true })
         .then((comment) => {
-            res.status(200).json({ comment });
+            res.append('Access-Control-Allow-Origin', '*').status(200).json({ comment });
         })
         .catch((err) => {
             res.status(500).json(err);
@@ -56,7 +56,7 @@ exports.deleteComment = (req, res) => {
     let commentId = req.params.comment_id;
     Comments.findByIdAndRemove({ _id: commentId })
         .then(() => {
-            res.status(201).json({ message: 'Comment deleted!' });
+            res.append('Access-Control-Allow-Origin', '*').status(201).json({ message: 'Comment deleted!' });
         })
         .catch((err) => {
             res.status(500).json(err);
@@ -68,7 +68,7 @@ exports.getUser = (req, res, next) => {
     console.log(user_id);
     Users.find({ _id: user_id })
         .then((user) => {
-            res.status(200).json({ user });
+            res.append('Access-Control-Allow-Origin', '*').status(200).json({ user });
         })
         .catch(next);
 };

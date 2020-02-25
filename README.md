@@ -1,4 +1,20 @@
-## Northcoders News API
+# Northcoders News API (dentednerd, June 2017)
+
+## Prerequisites
+
+- MongoDB
+
+## Setup
+
+1. Clone this repo to your local machine: `git clone https://github.com/dentednerd/northcoders-news-NC7.git`
+1. Change directory: `cd northcoders-news-NC7`
+1. Install dependencies: `npm install`
+1. Seed your MongoDB database with API data: `node seed/seed.js`
+1. Run the API: `npm run start`
+
+---
+
+## instructions from Northcoders
 
 ### Background
 
@@ -13,20 +29,20 @@ You will need to get all your routes built up first as you can share the functio
 
 The below are all model methods that you call on your models.
 
-* [find](http://mongoosejs.com/docs/api.html#model_Model.find)
-* [findOne](http://mongoosejs.com/docs/api.html#model_Model.findOne)
-* [findOneAndUpdate](http://mongoosejs.com/docs/api.html#model_Model.findOneAndUpdate)
-* [findOneAndRemove](http://mongoosejs.com/docs/api.html#model_Model.findOneAndRemove)
-* [findById](http://mongoosejs.com/docs/api.html#model_Model.findById)
-* [findByIdAndUpdate](http://mongoosejs.com/docs/api.html#model_Model.findByIdAndUpdate)
-* [findByIdAndRemove](http://mongoosejs.com/docs/api.html#model_Model.findByIdAndRemove)
-* [update](http://mongoosejs.com/docs/api.html#model_Model.update)
+- [find](http://mongoosejs.com/docs/api.html#model_Model.find)
+- [findOne](http://mongoosejs.com/docs/api.html#model_Model.findOne)
+- [findOneAndUpdate](http://mongoosejs.com/docs/api.html#model_Model.findOneAndUpdate)
+- [findOneAndRemove](http://mongoosejs.com/docs/api.html#model_Model.findOneAndRemove)
+- [findById](http://mongoosejs.com/docs/api.html#model_Model.findById)
+- [findByIdAndUpdate](http://mongoosejs.com/docs/api.html#model_Model.findByIdAndUpdate)
+- [findByIdAndRemove](http://mongoosejs.com/docs/api.html#model_Model.findByIdAndRemove)
+- [update](http://mongoosejs.com/docs/api.html#model_Model.update)
 
 There are also some methods that can be called on new or retrieved documents. These are:
 
-* [remove](http://mongoosejs.com/docs/api.html#model_Model-remove)
-* [save](http://mongoosejs.com/docs/api.html#model_Model-save)
-* [count](http://mongoosejs.com/docs/api.html#model_Model.count)
+- [remove](http://mongoosejs.com/docs/api.html#model_Model-remove)
+- [save](http://mongoosejs.com/docs/api.html#model_Model-save)
+- [count](http://mongoosejs.com/docs/api.html#model_Model.count)
 
 ### Tasks
 
