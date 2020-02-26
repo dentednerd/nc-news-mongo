@@ -12,6 +12,14 @@
 1. Seed your MongoDB database with API data: `node seed/seed.js`
 1. Run the API: `npm run start`
 
+## Docker
+
+1. set up Dockerfile and docker-compose.yml
+1. change config urls to point to the mongo service, e.g. `ncnews-mongo:3000`
+1. `docker network create northcoders-news`
+1. `docker-compose build`
+1. `docker-compose up`
+
 ---
 
 ## instructions from Northcoders

@@ -9,7 +9,9 @@ exports.getArticlesByTopic = (req, res, next) => {
       }
       res.append('Access-Control-Allow-Origin', '*').status(200).json({ articles });
     })
-    .catch(next);
+    .catch((err) => {
+      res.status(500).json(err);
+    });
 };
 
 exports.getArticleById = (req, res) => {

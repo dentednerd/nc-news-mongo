@@ -31,7 +31,7 @@ mongoose.connect(DBs.dev, function (err) {
       process.exit();
     });
   } else {
-    logger.error('Database error:', err.message);
+    logger.error('Unable to seed database:', err.message);
     console.log(JSON.stringify(err));
     process.exit();
   }
