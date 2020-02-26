@@ -21,7 +21,7 @@ exports.getArticleById = (req, res) => {
     .catch((err) => {
       res.status(500).json(err);
     });
-}
+};
 
 exports.getAllArticles = (req, res) => {
   Articles.find({})

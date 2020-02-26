@@ -23,15 +23,15 @@ mongoose.connect(DBs.dev, function (err) {
       addNorthcoderUser
     ], function (err) {
       if (err) {
-        logger.error('ERROR SEEDING :O');
+        logger.error('ERROR SEEDING:', err.message);
         console.log(JSON.stringify(err));
         process.exit();
       }
-      logger.info('DONE SEEDING!!');
+      logger.info('Successfully seeded database');
       process.exit();
     });
   } else {
-    logger.error('DB ERROR');
+    logger.error('Database error:', err.message);
     console.log(JSON.stringify(err));
     process.exit();
   }
