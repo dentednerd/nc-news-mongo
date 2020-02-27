@@ -7,6 +7,6 @@ RUN echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > .npmrc
 RUN ["npm", "install"]
 RUN rm -f .npmrc
 RUN npm install -g nodemon
-EXPOSE 3000
+EXPOSE 8000
 EXPOSE 3090
 CMD ["npm", "start"]

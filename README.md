@@ -15,7 +15,7 @@
 ## Docker
 
 1. set up Dockerfile and docker-compose.yml
-1. change config urls to point to the mongo service, e.g. `ncnews-mongo:3000`
+1. change config urls to point to the mongo service, e.g. `ncnews-mongo:8000`
 1. `docker network create northcoders-news`
 1. `docker-compose build`
 1. `docker-compose up`

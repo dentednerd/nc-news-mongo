@@ -12,8 +12,8 @@ const {
   voteArticle,
   voteComment,
   deleteComment,
-  getUser
 } = require('../controllers/comments');
+const { getAllUsers, getUser } = require('../controllers/users');
 
 router.get('/', (req, res) => res.send("Welcome to dentednerd's Northcoders News API! Try /topics, /users or /articles."));
 router.get('/topics', getAllTopics);
@@ -25,6 +25,7 @@ router.post('/articles/:article_id/comments', postNewComment);
 router.put('/articles/:article_id', voteArticle);
 router.put('/comments/:comment_id', voteComment);
 router.delete('/comments/:comment_id', deleteComment);
+router.get('/users', getAllUsers);
 router.get('/users/:username', getUser);
 
 module.exports = router;
