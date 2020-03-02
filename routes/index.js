@@ -4,10 +4,12 @@ const { getAllTopics } = require('../controllers/topics');
 const {
   getAllArticles,
   getArticleById,
-  getArticlesByTopic
+  getArticlesByTopic,
+  getArticlesByUser
 } = require('../controllers/articles');
 const {
   getCommentsByArticle,
+  getCommentsByUser,
   postNewComment,
   voteArticle,
   voteComment,
@@ -27,5 +29,7 @@ router.put('/comments/:comment_id', voteComment);
 router.delete('/comments/:comment_id', deleteComment);
 router.get('/users', getAllUsers);
 router.get('/users/:username', getUser);
+router.get('/users/:username/articles', getArticlesByUser);
+router.get('/users/:username/comments', getCommentsByUser);
 
 module.exports = router;

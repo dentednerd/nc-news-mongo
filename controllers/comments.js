@@ -12,6 +12,17 @@ exports.getCommentsByArticle = (req, res) => {
     });
 };
 
+exports.getCommentsByUser = (req, res) => {
+  let { username } = req.params;
+  Comments.find({ created_by: username })
+    .then((comments) => {
+      res.append('Access-Control-Allow-Origin', '*').json({ comments });
+    })
+    .catch((err) => {
+      res.status(500).json(err);
+    });
+};
+
 exports.postNewComment = (req, res) => {
   let articleId = req.params.article_id;
   let comment = new Comments({
