@@ -14,7 +14,7 @@
   "author": "Joey Imlay",
   "license": "ISC",
   "dependencies": {
-    "async": "^2.1.4",
+    "async": "^2.6.4",
     "body-parser": "^1.19.0",
     "chance": "^1.0.4",
     "express": "^4.17.1",
